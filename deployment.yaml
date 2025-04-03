@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devfile-sample-python-basic
+  name: devfile-sample-python-basic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devfile-sample-python-basic
+  template:
+    metadata:
+      labels:
+        app: devfile-sample-python-basic
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/mvician/devfile-sample-python-basic
+          imagePullPolicy: Always
+          name: devfile-sample-python-basic
+          ports:
+            - containerPort: 8081
+              protocol: TCP
